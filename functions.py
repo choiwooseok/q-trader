@@ -16,9 +16,11 @@ def getStockDataVec(key):
 	return vec
 
 # returns the sigmoid
-def sigmoid(x):
-	return 1 / (1 + math.exp(-x))
-
+def sigmoid(gamma):
+    if gamma < 0:
+        return 1 - 1 / (1 + math.exp(gamma))
+    return 1 / (1 + math.exp(-gamma))
+	
 # returns an an n-day state representation ending at time t
 def getState(data, t, n):
 	d = t - n + 1
